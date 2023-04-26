@@ -1,0 +1,302 @@
+/* Importação da fonte pelo google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* Variáveis */
+:root {
+    --header-height: 3.5rem;
+
+    /* Variações de cores para utilizar */
+    /* 
+        Purple: hsl(250, 66%, 75%)
+        Blue: hsl(207, 90%, 72%)
+        Pink: hsl(356, 66%, 75%)
+        Teal: hsl(174, 63%, 62%)
+    */
+
+    /* Porcentagens como o padrão hsl (hue, saturation, lightness) */
+    --first-matiz: 207;
+    --saturation: 90%;
+    --lightness: 72%;
+    --second-matiz: 219;
+
+    /* Cores utilizadas */
+    --first-color: hsl(var(--first-matiz), var(--saturation), var(--lightness));
+    --first-color-alternative: hsl(var(--first-matiz), var(--saturation), 68%); /* -4% */
+    --color-title: hsl(var(--second-matiz), 15%, 95%);
+    --color-text: hsl(var(--second-matiz), 8%, 75%);
+    --color-text-light: hsl(var(--second-matiz), 4%, 55%);
+    --color-body: hsl(var(--second-matiz), 48%, 8%);
+    --color-container: hsl(var(--second-matiz), 32%, 12%);
+
+    /* Tamanhos das fontes */
+    --font-body: 'Poppins', sans-serif;
+    --bigger-size-font: 1.75rem;
+    --size-font-h1: 1.5rem;
+    --size-font-h2: 1.25rem;
+    --size-font-h3: 1rem;
+    --size-font-normal: .938rem;
+    --size-font-small: .813rem; 
+    --size-font-smaller: .75rem;
+    --size-font-smallest: .625rem;
+
+    /* Peso das fontes */
+    --font-average: 500;
+    --font-semibold: 600;
+
+    /* z-index do projeto */
+    --z-tooltip: 10;
+    --z-fixed: 100;
+    --z-modal: 1000;
+
+    /* Transiton mais utilizada no projeto */
+    --transition: 0.4s;
+}
+
+/* Responsividade para tamanhos de tela maiores que 968px */
+@media  screen and (min-width: 968px) {
+    :root {
+        --bigger-size-font: 2.5rem;
+        --size-font-h1: 2.25rem;
+        --size-font-h2: 1.5rem; 
+        --size-font-h3: 1.25rem;
+        --size-font-normal: 1rem;
+        --size-font-small: .857rem; 
+        --size-font-smaller: .813rem;
+    }
+}
+
+/* Resetando o css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body,
+button,
+input {
+    font-family: var(--font-body);
+    font-size: var(--size-font-normal);
+}
+
+body {
+    background-color: var(--color-body);
+    color: var(--color-text);
+    transition: var(--transition);
+}
+
+h1,
+h2,
+h3 {
+    color: var(--color-text);
+    font-weight: var(--font-semibold);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Botão para mudar o modo escuro/light */
+.change-theme {
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.change-theme:hover {
+    color: var(--first-color);
+}
+
+/* Variáveis para o tema claro */
+body.light-theme {
+    --color-title: hsl(var(--second-matiz), 15%, 15%);
+    --color-text: hsl(var(--second-matiz), 8%, 35%);
+    --color-body: hsl(var(--second-matiz), 100%, 99%);
+    --color-container: #fff;
+}
+
+/* Mudança de cor em algumas partes, com tema Claro */
+
+.light-theme .scroll-header {
+    box-shadow: 0 2px 4px hsla(0, 0%, 1%, .1);
+}
+
+.light-theme .nav__menu {
+    background-color: hsla(var(--second-matiz), 32%, 90%, .8);
+}
+
+.light-theme .section__subtitle {
+    color: var(--color-text);
+}
+
+.light-theme .home__social-link {
+    box-shadow: 0 2px 8px hsla(var(--second-matiz), 48%, 8%, .1);
+}
+
+.light-theme .home__social::after,
+.light-theme .footer__social-link {
+    background-color: var(--color-title);
+}
+
+.light-theme .home__social-link,
+.light-theme .home__scroll,
+.light-theme .button,
+.light-theme .button:hover,
+.light-theme .active-work,
+.light-theme .footer__title,
+.light-theme .footer__link,
+.light-theme .footer__copy {
+    color: var(--color-title);
+}
+
+.light-theme .about__box {
+    box-shadow: 0 2px 8px hsla(var(--second-matiz), 48%, 8%, .1);
+}
+
+.light-theme .skills__content,
+.light-theme .services__card,
+.light-theme .work__card,
+.light-theme .testimonial__card,
+.light-theme .contact__card {
+    box-shadow: 0 2px 16px hsla(var(--second-matiz), 48%, 8%, .1);
+}
+
+.light-theme::-webkit-scrollbar {
+    background-color: hsla(var(--second-matiz), 8%, 66%);
+}
+
+.light-theme::-webkit-scrollbar-thumb {
+    background-color: hsla(var(--second-matiz), 8%, 54%);
+}
+
+.light-theme::-webkit-scrollbar-thumb:hover {
+    background-color: hsla(var(--second-matiz), 8%, 44%);
+}
+
+
+/* CSS Reutilizável de classes */
+.container {
+    max-width: 968px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.grid {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.main {
+    overflow: hidden;
+}
+
+.section {
+    padding: 4.5rem 0 1rem;
+}
+
+.section__title,
+.section__subtitle {
+    text-align: center;
+}
+
+.section__title {
+    font-size: var(--size-font-h2);
+    color: var(--first-color);
+    margin-bottom: 2rem;
+}
+
+.section__subtitle {
+    display: block;
+    font-size: var(--size-font-small);
+    color: var(--color-text-light);
+}
+
+/* Cabeçalho e menu */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-body);
+    z-index: var(--z-fixed);
+    transition: var(--transition);
+}
+
+.nav {
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__logo {
+    color: var(--first-color);
+    font-weight: var(--size-font-normal);
+    transition: var(--transition);
+}
+
+.nav__logo:hover {
+    color: var(--first-color-alternative);
+}
+
+.nav__menu {
+    position: fixed;
+    bottom: 1rem;
+    background-color: hsl(var(--second-matiz), 32%, 16%, 0.8);
+    width: 90%;
+    border-radius: 4rem;
+    padding: 1rem 2.25rem;
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+}
+
+.nav__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__link {
+    color: var(--color-text);
+    font-size: 1.25rem;
+    padding: 0.4rem;
+    display: flex;
+    border-radius: 5rem;
+}
+
+/* Ativar link */
+.active-link {
+    background: linear-gradient(180deg,
+                hsla(var(--first-matiz), var(--saturation), var(--lightness), 1),
+                hsla(var(--first-matiz), var(--saturation), var(--lightness), .2)
+                );
+    box-shadow: 0 0 16px hsla(var(--first-matiz), var(--saturation), var(--lightness), .4);
+    color: var(--color-title);
+}
+
+/* Adicionar uma sombra no cabeçalho em uma determinada altura */
+.scroll-header{
+    box-shadow: 0 4px 4px hsla(0, 0%, 4%, .3);
+}
+
+/* home */
